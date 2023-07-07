@@ -1,0 +1,110 @@
+{
+  "data": {
+    "id": 1,
+    "rank": 1,
+    "slug": "bitcoin",
+    "name": "Bitcoin",
+    "symbol": "BTC",
+    "category": "Currency",
+    "type": "coin",
+    "volume24hBase": 220140.7501,
+    "circulatingSupply": 19422375,
+    "totalSupply": 21000000,
+    "maxSupply": 21000000,
+    "images": {
+      "16x16": "https://img.api.cryptorank.io/coins/icon.bitcoin1524754012028.png",
+      "200x200": "https://img.api.cryptorank.io/coins/bitcoin1524754012028.png",
+      "60x60": "https://img.api.cryptorank.io/coins/60x60.bitcoin1524754012028.png"
+    },
+    "values": {
+      "USD": {
+        "price": 30223.605345438285,
+        "volume24h": 6653447151,
+        "high24h": 30630.67707120604,
+        "low24h": 29792.45858869327,
+        "marketCap": 587014196871.1069,
+        "percentChange24h": -1.3011,
+        "percentChange7d": -2.3327,
+        "percentChange30d": 12.6698,
+        "percentChange3m": 8.2429,
+        "percentChange6m": 78.267
+      },
+      "BTC": {
+        "price": 1,
+        "volume24h": 220140,
+        "high24h": 1,
+        "low24h": 1,
+        "marketCap": 19422375,
+        "percentChange24h": 0,
+        "percentChange7d": 0,
+        "percentChange30d": 0,
+        "percentChange3m": 0,
+        "percentChange6m": 0
+      },
+      "ETH": {
+        "price": 16.20719626988143,
+        "volume24h": 3567864,
+        "high24h": 16.31171668574872,
+        "low24h": 16.01578953011452,
+        "marketCap": 314782243.6522383,
+        "percentChange24h": 0.8713,
+        "percentChange7d": -0.4415,
+        "percentChange30d": 12.8049,
+        "percentChange3m": 8.2736,
+        "percentChange6m": 21.373
+      }
+    },
+    "lastUpdated": "2023-07-07T13:23:33.459Z",
+    "links": [
+      {
+        "type": "linkedin",
+        "value": "https://www.linkedin.com/company/bitcoin-foundation/"
+      },
+      {
+        "type": "facebook",
+        "value": "https://www.facebook.com/bitcoin"
+      },
+      {
+        "type": "github",
+        "value": "https://github.com/bitcoin/bitcoin"
+      },
+      {
+        "type": "explorer",
+        "value": "https://blockchain.info/"
+      },
+      {
+        "type": "messageboard",
+        "value": "https://bitcointalk.org"
+      },
+      {
+        "type": "messageboard",
+        "value": "https://forum.bitcoin.com/"
+      },
+      {
+        "type": "web",
+        "value": "https://bitcoin.org/"
+      },
+      {
+        "type": "explorer",
+        "value": "https://explorer.bitquery.io/bitcoin"
+      },
+      {
+        "type": "whitepaper",
+        "value": "https://www.ussc.gov/sites/default/files/pdf/training/annual-national-training-seminar/2018/Emerging_Tech_Bitcoin_Crypto.pdf"
+      },
+      {
+        "type": "reddit",
+        "value": "https://www.reddit.com/r/Bitcoin/"
+      }
+    ],
+    "tokens": []
+  },
+  "status": {
+    "time": "2023-07-07T13:23:47.983Z",
+    "success": true,
+    "code": 200,
+    "message": "OK",
+    "responseTime": 0,
+    "creditsCost": 1
+  }
+}
