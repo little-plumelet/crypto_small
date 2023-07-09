@@ -1,6 +1,7 @@
 export interface ICurrency {
   id: number;
   name: string;
+  slug: string;
   values: {
     USD: {
       price: number;
@@ -9,4 +10,6 @@ export interface ICurrency {
   }
   circulatingSupply: number;
   category: string;
+  toAth: number;
+  fromAth: number;
 };

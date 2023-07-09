@@ -16,16 +16,18 @@ export const Table: React.FC<Props> = ({
           <th>Circulating Supply</th>
           <th>Market Cap</th>
           <th>Category</th>
+          <th>From ATH, %</th>
         </tr>
       </thead>
       <tbody>
         {data?.map((currency) => (
           <tr key={currency?.id}>
             <td>{currency?.name}</td>
-            <td>{currency?.values?.USD?.price}</td>
+            <td>{currency?.values?.USD?.price.toFixed(3)}</td>
             <td>{currency?.circulatingSupply}</td>
-            <td>{currency?.values?.USD?.marketCap}</td>
+            <td>{currency?.values?.USD?.marketCap.toFixed(3)}</td>
             <td>{currency?.category}</td>
+            <td>{currency?.fromAth}</td>
           </tr>
         ))}
       </tbody>
