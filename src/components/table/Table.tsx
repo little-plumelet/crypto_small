@@ -1,15 +1,12 @@
-import MOCK_DATA from '../../../mockdata.json';
-interface Currency {
-  name: string;
-  price: number;
-  circulatingSupply: number;
-  marketCap: number;
-  category: string;
-};
+import { Currency } from "@/interfaces/currency"
 
-export const Table = () => {
-  // data will be from props
-  const data = [MOCK_DATA.data, MOCK_DATA.data, MOCK_DATA.data];
+interface Props {
+  data: Array<Currency>
+}
+
+export const Table: React.FC<Props> = ({
+  data
+}) => {
   return (
     <table>
       <thead>
@@ -22,7 +19,7 @@ export const Table = () => {
         </tr>
       </thead>
       <tbody>
-        {data.map((currency) => (
+        {data?.map((currency) => (
           <tr key={currency?.id}>
             <td>{currency?.name}</td>
             <td>{currency?.values?.USD?.price}</td>

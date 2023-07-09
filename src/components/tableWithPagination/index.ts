@@ -1,0 +1,1 @@
+export { TableWithPagination } from './TableWithPagination';
