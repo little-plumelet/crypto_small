@@ -86,13 +86,16 @@ export const TableWithPagination = () => {
   return (
     <>
       <Table data={currencyFullData?.data} />
+      <br></br>
+      <div style={{width: "100vw", display: "flex", justifyContent: "center"}}>
       <button onClick={handlePreviousPage} disabled={currentPage === 1}>
         Previous
       </button>
-      <span>{currentPage}</span>
+      <span style={{"padding":"0 20px"}}>{currentPage}</span>
       <button onClick={handleNextPage} disabled={currentPage === totalPages}>
         Next
       </button>
+      </div>
     </>
   );
 };

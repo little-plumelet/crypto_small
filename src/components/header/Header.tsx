@@ -1,8 +1,17 @@
-import Link from "next/link"
+import Link from "next/link";
+
+const ulStyle = {
+  'display': 'flex',
+  'justify-content': 'center',
+  'gap': 40,
+  'padding': '20px 20px',
+  'margin-bottom': 50,
+  'border-bottom': 'solid 1px',
+};
 
 export const Header = () => {
   return (
-    <ul>
+    <ul style={ulStyle}>
       <li>
         <Link href="/">Home</Link>
       </li>
