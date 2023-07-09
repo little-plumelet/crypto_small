@@ -1,3 +1,5 @@
 export default function Home() {
-  return null;
+  return (
+    <h1>Wellcome to crypto currency!</h1>
+  );
 }
