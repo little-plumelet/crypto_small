@@ -1,7 +1,7 @@
-import { Currency } from "@/interfaces/currency"
+import { ICurrency } from "@/interfaces/currency"
 
 interface Props {
-  data: Array<Currency>
+  data: Array<ICurrency>
 }
 
 export const Table: React.FC<Props> = ({

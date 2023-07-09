@@ -1,15 +1,30 @@
-"use client"
-import { Currency } from '@/interfaces/currency';
-import { useState } from 'react';
-import MOCK_DATA from '../../../mockdata.json';
-import { Table } from '../table';
+"use client";
+
+import { ICurrencyData } from "@/interfaces/currencyData";
+import { useState } from "react";
+import useSWR from "swr";
+import { Table } from "../table";
+
+const fetcher = (url: string) =>
+  fetch(url).then(
+    (res) => res.json()
+  );
 
 export const TableWithPagination = () => {
-  const data = MOCK_DATA.data as Array<Currency>;
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 10;
+  const url = `https://api.cryptorank.io/v1/currencies/?api_key=${process.env.NEXT_PUBLIC_API_KEY}&limit=${pageSize}&offset=${currentPage * pageSize ?? 0}`;
+  const { data, error } = useSWR<ICurrencyData>(url, fetcher);
 
-  const totalPages = Math.ceil(data.length / pageSize);
+  if (error) {
+    return <div>Error loading data</div>;
+  }
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+
+  const totalPages = Math.ceil(data?.meta?.count / pageSize);
 
   const handlePreviousPage = () => {
     setCurrentPage((prevPage) => prevPage - 1);
@@ -19,16 +34,16 @@ export const TableWithPagination = () => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
 
-  return(
+  return (
     <>
-        <Table data={data} />
-        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-          Previous
-        </button>
-        <span>{currentPage}</span>
-        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-          Next
-        </button>
-      </>
-  )
-}
+      <Table data={data.data} />
+      <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+        Previous
+      </button>
+      <span>{currentPage}</span>
+      <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+        Next
+      </button>
+    </>
+  );
+};
