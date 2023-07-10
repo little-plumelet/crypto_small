@@ -14,7 +14,7 @@ export const Converter: React.FC = () => {
   const [fromName, setFromName] = useState<string>("");
   const [toName, setToName] = useState<string>("");
   const [converted, setConverted] = useState(0);
-  const url = `https://api.cryptorank.io/v1/currencies/?api_key=${process.env.NEXT_PUBLIC_API_KEY}&limit=1000`;
+  const url = `https://api.cryptorank.io/v1/currencies/?api_key=${process.env.NEXT_PUBLIC_API_KEY}&limit=200`;
   
   const { data: currencies, error, isLoading } = useSWR<ICurrencyData>(url, fetcher);
 
@@ -54,8 +54,8 @@ export const Converter: React.FC = () => {
   }
 
   if (!to && currencies.data.length > 0) {
-    setTo(currencies?.data[0]?.values?.USD?.price || 0);
-    setToName(currencies?.data[0]?.symbol)
+    setTo(currencies?.data[1]?.values?.USD?.price || 0);
+    setToName(currencies?.data[1]?.symbol)
   }
 
   return (
