@@ -19,11 +19,7 @@ export const Converter: React.FC = () => {
   const { data: currencies, error, isLoading } = useSWR<ICurrencyData>(url, fetcher);
 
   useEffect(() => {
-    console.log('from = ', from);
-    console.log('to = ', to)
-    console.log('amount = ', amount)
     setConverted(convertCurrencies(amount, from, to));
-    
   }, [from, to, amount])
   if (error) {
     return <div>Error loading data</div>;
