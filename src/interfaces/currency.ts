@@ -12,4 +12,5 @@ export interface ICurrency {
   category: string;
   toAth: number;
   fromAth: number;
+  symbol: string;
 };
