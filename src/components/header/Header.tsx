@@ -1,26 +1,36 @@
-import Link from "next/link";
+"use client";
 
-const ulStyle = {
-  'display': 'flex',
-  'justify-content': 'center',
-  'gap': 40,
-  'padding': '20px 20px',
-  'margin-bottom': 50,
-  'border-bottom': 'solid 1px',
-};
+import Link from "next/link";
+import styled from "styled-components";
+
+const Ul = styled.ul`
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px 20px;
+  margin-bottom: 50px;
+`;
+
+const ListItem = styled.li`
+  list-style: none;
+
+  &:hover {
+    color: gray
+  }
+`;
 
 export const Header = () => {
   return (
-    <ul style={ulStyle}>
-      <li>
+    <Ul>
+      <ListItem>
         <Link href="/">Home</Link>
-      </li>
-      <li>
+      </ListItem>
+      <ListItem>
         <Link href="/converter">Converter</Link>
-      </li>
-      <li>
+      </ListItem>
+      <ListItem>
         <Link href="/currencyList">Currencies</Link>
-      </li>
-    </ul>
+      </ListItem>
+    </Ul>
   )
 }
