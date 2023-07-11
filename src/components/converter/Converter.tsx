@@ -22,7 +22,7 @@ const ContainerCalc = styled.div`
 `;
 
 const Input = styled.input`
-  margin-bottom: 10px;
+  margin: 10px 0;
   padding: 5px;
 `;
 
@@ -101,7 +101,8 @@ export const Converter: React.FC = () => {
     <Container>
       <h3>Cryptocurrency Converter Calculator</h3>
       <ContainerCalc>
-        <Input name="amount" type="number" value={amount} onChange={handleAmountChange} />
+        <label htmlFor="amount">amount:</label>
+        <Input id="amount" type="number" value={amount} onChange={handleAmountChange} />
         <SelectContainer>
           <Select name="from" value={from} onChange={handleFromChange}>
             {currencies?.data.map((currency) => {
