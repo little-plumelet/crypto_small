@@ -1,8 +1,34 @@
-import { ICurrency } from "@/interfaces/currency"
+import { ICurrency } from "@/interfaces/currency";
+import styled from "styled-components";
+
 
 interface Props {
   data: Array<ICurrency>
 }
+
+const StyledTable = styled.table`
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px 50px;
+`;
+
+const StyledTh = styled.th`
+  flex: 1;
+  padding: 20px 10px 20px;
+  text-align: left;
+`;
+
+const StyledTd = styled.td`
+  flex: 1;
+`;
+
+const StyledTr = styled.tr`
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  column-gap: 20px;
+  border-bottom: 1px solid lightgray;
+  padding: 10px 0;
+`;
 
 const tdStyle = {
   flex: 1
@@ -18,31 +44,31 @@ export const Table: React.FC<Props> = ({
   data
 }) => {
   return (
-    <table style={{ width: "100%" }}>
+    <StyledTable>
       <thead>
-        <tr>
-          <th style={thStyle}>Name</th>
-          <th style={thStyle}>Price, $</th>
-          <th style={thStyle}>Circulating Supply</th>
-          <th style={thStyle}>Market Cap</th>
-          <th style={thStyle}>Category</th>
-          <th style={thStyle}>From ATH, %</th>
-          <th style={thStyle}>To ATH, %</th>
-        </tr>
+        <StyledTr>
+          <StyledTh>Name</StyledTh>
+          <StyledTh >Price, $</StyledTh>
+          <StyledTh>Circulating Supply</StyledTh>
+          <StyledTh>Market Cap</StyledTh>
+          <StyledTh>Category</StyledTh>
+          <StyledTh>From ATH, %</StyledTh>
+          <StyledTh>To ATH, %</StyledTh>
+        </StyledTr>
       </thead>
       <tbody>
         {data?.map((currency) => (
-          <tr key={currency?.id}>
-            <td style={tdStyle}>{currency?.name}</td>
-            <td style={tdStyle}>{currency?.values?.USD?.price.toFixed(2)}</td>
-            <td style={tdStyle}>{currency?.circulatingSupply}</td>
-            <td style={tdStyle}>{currency?.values?.USD?.marketCap.toFixed(2)}</td>
-            <td style={tdStyle}>{currency?.category}</td>
-            <td style={tdStyle}>{currency?.fromAth?.toFixed(2)}</td>
-            <td style={tdStyle}>{currency?.toAth?.toFixed(2)}</td>
-          </tr>
+          <StyledTr key={currency?.id}>
+            <StyledTd>{currency?.name}</StyledTd>
+            <StyledTd>{currency?.values?.USD?.price.toFixed(2)}</StyledTd>
+            <StyledTd>{currency?.circulatingSupply}</StyledTd>
+            <StyledTd>{currency?.values?.USD?.marketCap.toFixed(2)}</StyledTd>
+            <StyledTd>{currency?.category}</StyledTd>
+            <StyledTd>{currency?.fromAth?.toFixed(2)}</StyledTd>
+            <StyledTd>{currency?.toAth?.toFixed(2)}</StyledTd>
+          </StyledTr>
         ))}
       </tbody>
-    </table>
+    </StyledTable>
   )
 }

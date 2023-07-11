@@ -6,6 +6,28 @@ import { calculateToAth } from "@/utils/calculateToAth";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import { Table } from "../table";
+import styled from "styled-components";
+
+const Button = styled.button`
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+`;
+
+const Span = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+`
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -88,13 +110,13 @@ export const TableWithPagination = () => {
       <Table data={currencyFullData?.data} />
       <br></br>
       <div style={{width: "100vw", display: "flex", justifyContent: "center"}}>
-      <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+      <Button onClick={handlePreviousPage} disabled={currentPage === 1}>
         Previous
-      </button>
-      <span style={{"padding":"0 20px"}}>{currentPage}</span>
-      <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+      </Button>
+      <Span>{currentPage}</Span>
+      <Button onClick={handleNextPage} disabled={currentPage === totalPages}>
         Next
-      </button>
+      </Button>
       </div>
     </>
   );
