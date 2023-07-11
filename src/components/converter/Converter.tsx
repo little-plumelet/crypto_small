@@ -19,7 +19,6 @@ const ContainerCalc = styled.div`
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-
 `;
 
 const Input = styled.input`
@@ -30,8 +29,8 @@ const Input = styled.input`
 const SelectContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  gap: 20px
-`
+  gap: 20px;
+`;
 const Select = styled.select`
   padding: 5px;
   flex: 1;
@@ -51,11 +50,7 @@ export const Converter: React.FC = () => {
   const [converted, setConverted] = useState(0);
   const url = `https://api.cryptorank.io/v1/currencies/?api_key=${process.env.NEXT_PUBLIC_API_KEY}&limit=200`;
 
-  const {
-    data: currencies,
-    error,
-    isLoading,
-  } = useSWR<ICurrencyData>(url, fetcher);
+  const { data: currencies, error } = useSWR<ICurrencyData>(url, fetcher);
 
   useEffect(() => {
     setConverted(convertCurrencies(amount, from, to));
@@ -68,12 +63,12 @@ export const Converter: React.FC = () => {
     return <div>Loading...</div>;
   }
 
-  const handleamountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(event.target.value);
     setAmount(value);
   };
 
-  const handlefromChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleFromChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     const name =
       event.target.selectedOptions[0].innerText.match(/(?<=\().*?(?=\))/)?.[0];
@@ -81,7 +76,7 @@ export const Converter: React.FC = () => {
     setFromName(name ?? "");
   };
 
-  const handletoChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleToChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
     const name =
       event.target.selectedOptions[0].innerText.match(/(?<=\().*?(?=\))/)?.[0];
@@ -99,13 +94,16 @@ export const Converter: React.FC = () => {
     setToName(currencies?.data[1]?.symbol);
   }
 
+  console.log('to = ', to);
+  console.log('toName = ', toName);
+  console.log('from = ', from);
   return (
     <Container>
       <h3>Cryptocurrency Converter Calculator</h3>
       <ContainerCalc>
-        <Input type="number" value={amount} onChange={handleamountChange} />
+        <Input name="amount" type="number" value={amount} onChange={handleAmountChange} />
         <SelectContainer>
-          <Select value={from} onChange={handlefromChange}>
+          <Select name="from" value={from} onChange={handleFromChange}>
             {currencies?.data.map((currency) => {
               return (
                 <option key={currency?.id} value={currency?.values?.USD?.price}>
@@ -114,7 +112,7 @@ export const Converter: React.FC = () => {
               );
             })}
           </Select>
-          <Select value={to} onChange={handletoChange}>
+          <Select name="to" value={to} onChange={handleToChange}>
             {currencies?.data.map((currency) => {
               return (
                 <option key={currency?.id} value={currency?.values?.USD?.price}>
